@@ -7,10 +7,15 @@ const data = [
   { lat: -33.865143, lng: 151.2099, label: "Sydney" },
 ];
 
+const globeImageURLs = [
+  "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg",
+  "//unpkg.com/three-globe/example/img/earth-night.jpg",
+];
+
 function App() {
   return (
     <div style={{ height: "100vh" }}>
-      <GlobeComponent data={data} />
+      <GlobeComponent data={data} globeImageUrl={globeImageURLs[1]} />
     </div>
   );
 }
