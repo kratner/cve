@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import GlobeComponent from "./components/Globe";
+
+const data = [
+  { lat: 40.7117244, lng: -74.0707383, label: "New York" },
+  { lat: 51.5074, lng: -0.1278, label: "London" },
+  { lat: -33.865143, lng: 151.2099, label: "Sydney" },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ height: "100vh" }}>
+      <GlobeComponent data={data} />
     </div>
   );
 }
