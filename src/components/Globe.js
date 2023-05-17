@@ -9,10 +9,11 @@ import { scaleLinear } from "d3-scale";
       "date": "2023-05-15"
 
 */
-const PointLabelRenderer = ({ point }) => {
+
+const PointLabelRenderer = () => {
   return (
     <div>
-      <strong>CVE:</strong> {point.cve}
+      <strong>CVE:</strong>
     </div>
   );
 };
@@ -27,17 +28,27 @@ const GlobeComponent = ({ data, globeImageUrl }) => {
   // Define the color scale for mapping percentile to color
   const colorScale = scaleLinear()
     .domain([0, 1]) // Assuming percentile ranges from 0 to 1
-    .range(["royalblue", "red"]);
+    .range(["blue", "red"]);
 
   return (
     <Globe
       globeImageUrl={globeImageUrl}
       pointsData={data}
-      pointAltitude={0.1} // Add 0.1 to lift the spheres above the globe
+      pointAltitude={0.1} // Adjust the pointAltitude value to lift the spheres above the globe
       pointColor={(d) => colorScale(d.percentile)} // Use the color scale to set the point color
       pointRadius={(point) => calculateSphereRadius(point.percentile)}
-      //   pointLabel={(d) => <PointLabel data={d.cve} />}
-      pointLabelRenderer={({ point }) => <PointLabelRenderer point={point} />}
+      // PointLabelRenderer={({ point }) => <PointLabelRenderer point={point} />} // Pass the point object as a prop
+      //   <PointLabelRenderer point={point} index={index} />
+      // )}
+      pointLabel={(d) =>
+        "<div><strong>CVE:</strong> " +
+        d.cve +
+        "<br /><strong>EPSS:</strong> " +
+        d.epss +
+        "<br /><strong>%:</strong> " +
+        d.percentile +
+        "</div>"
+      }
       pointLat="lat"
       pointLng="lng"
       pointResolution={24} // Increase the point resolution for smoother spheres

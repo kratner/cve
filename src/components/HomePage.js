@@ -6,18 +6,28 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #000;
+  /* height: 100vh; */
+  // background-color: #000;
   color: #fff;
 `;
 
+const FixedHeader = styled.div`
+  padding: 0em 1.5em;
+`;
+
+const ContentUnderlay = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: -2;
+`;
+
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
 `;
 
 const Subtitle = styled.h2`
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin-bottom: 2rem;
 `;
 
@@ -44,16 +54,19 @@ const ContentBlock = ({ children }) => {
   return <BlockContainer>{children}</BlockContainer>;
 };
 
-const HomePage = ({ contentBlocks }) => {
+const HomePage = ({ title, subtitle, buttonText, contentBlocks }) => {
   return (
     <Container>
-      {/* <Title>Welcome to Our Ultra Modern Dark Theme</Title>
-      <Subtitle>Discover the Future of Web Design</Subtitle>
-      <Button>Get Started</Button> */}
-
-      {contentBlocks.map((block, index) => (
-        <ContentBlock key={index}>{block}</ContentBlock>
-      ))}
+      <FixedHeader>
+        {title && <Title>{title}</Title>}
+        {subtitle && <Subtitle>{subtitle}</Subtitle>}
+        {buttonText && <Button>{buttonText}</Button>}
+      </FixedHeader>
+      <ContentUnderlay>
+        {contentBlocks.map((block, index) => (
+          <ContentBlock key={index}>{block}</ContentBlock>
+        ))}
+      </ContentUnderlay>
     </Container>
   );
 };

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import GlobeComponent from "./components/Globe";
 import DataFetcher from "./components/DataFetcher";
 // import BarChart from "./components/d3/BarChart";
-import Spheres from "./components/d3/Spheres";
+// import Spheres from "./components/d3/Spheres";
+import HeadContent from "./components/HeadContent";
 import HomePage from "./components/HomePage";
 import { getRandomCoordinate } from "./utils/utils";
 
@@ -97,7 +98,17 @@ const App = () => {
 
   return (
     <div>
-      <HomePage contentBlocks={contentBlocks} />
+      <HeadContent
+        title="CVE EPSS Data"
+        description="CVE EPSS Data"
+        keywords="cve, epss, vulnerabilities"
+      />
+      <HomePage
+        title="Exploit Prediction Scoring System (EPSS)"
+        subtitle="https://www.first.org"
+        // buttonText="Contact Us"
+        contentBlocks={contentBlocks}
+      />
       {/* <Spheres data={epss_data} /> */}
 
       {/* <h3>National Institute of Standards and Technology (NIST)</h3>
