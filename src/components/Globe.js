@@ -18,7 +18,7 @@ const PointLabelRenderer = () => {
   );
 };
 
-const GlobeComponent = ({ data, globeImageUrl }) => {
+const GlobeComponent = ({ data, globeImageUrl, width, height, position }) => {
   const calculateSphereRadius = (percentile) => {
     // Define the scaling factor for sphere radius based on percentile
     const scaleFactor = 10;
@@ -56,6 +56,9 @@ const GlobeComponent = ({ data, globeImageUrl }) => {
         const color = new THREE.Color().setHSL(percentile, 1, 0.5);
         return new THREE.MeshLambertMaterial({ color });
       }}
+      width={width}
+      height={height}
+      position={position}
     />
   );
 };

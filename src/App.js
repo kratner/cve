@@ -7,11 +7,11 @@ import HeadContent from "./components/HeadContent";
 import HomePage from "./components/HomePage";
 import { getRandomCoordinate } from "./utils/utils";
 
-const globeComponentData = [
-  { lat: 40.7117244, lng: -74.0707383, label: "New York" },
-  { lat: 51.5074, lng: -0.1278, label: "London" },
-  { lat: -33.865143, lng: 151.2099, label: "Sydney" },
-];
+// const globeComponentData = [
+//   { lat: 40.7117244, lng: -74.0707383, label: "New York" },
+//   { lat: 51.5074, lng: -0.1278, label: "London" },
+//   { lat: -33.865143, lng: 151.2099, label: "Sydney" },
+// ];
 
 const globeImageURLs = [
   "//unpkg.com/three-globe/example/img/earth-blue-marble.jpg",
@@ -48,7 +48,12 @@ const App = () => {
 
   const contentBlocks = [
     isEPSSDataLoaded && (
-      <GlobeComponent data={epss_data} globeImageUrl={globeImageURLs[1]} />
+      <GlobeComponent
+        data={epss_data}
+        globeImageUrl={globeImageURLs[1]}
+        width="100vw"
+        height="100vh"
+      />
     ),
   ];
   const [CVEBulletedList, setCVEBulletedList] = useState(null);
