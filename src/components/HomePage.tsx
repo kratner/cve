@@ -1,5 +1,10 @@
 import React from "react";
+
 import styled from "styled-components";
+
+interface BlockContainerProps {
+  children: React.ReactNode;
+}
 
 const Container = styled.div`
   display: flex;
@@ -50,11 +55,27 @@ const BlockContainer = styled.div`
   margin-bottom: 2rem;
 `;
 
-const ContentBlock = ({ children }) => {
-  return <BlockContainer>{children}</BlockContainer>;
-};
+// const ContentBlock = ({ children }) => {
+//   return <BlockContainer>{children}</BlockContainer>;
+// };
 
-const HomePage = ({ title, subtitle, buttonText, contentBlocks }) => {
+const ContentBlock: React.FC<BlockContainerProps> = ({ children}) => {
+  return <BlockContainer>{children}</BlockContainer>;
+}
+
+interface HomePageProps {
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  contentBlocks: React.ReactNode[];
+}
+
+const HomePage: React.FC<HomePageProps> = ({
+  title,
+  subtitle,
+  buttonText,
+  contentBlocks
+}) => {
   return (
     <Container>
       <FixedHeader>
