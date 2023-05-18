@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GlobeComponent from "./components/Globe";
-import DataFetcher from "./components/DataFetcher";
+// import DataFetcher from "./components/DataFetcher";
 // import BarChart from "./components/d3/BarChart";
 // import Spheres from "./components/d3/Spheres";
 import HeadContent from "./components/HeadContent";
@@ -23,7 +23,7 @@ const globeImageURLs = [
 // const EPSS_API_URL_STEM = "https://api.first.org/data/v1/epss";
 
 const App = () => {
-  const [EPSSBulletedList, setEPSSBulletedList] = useState(null);
+  // const [EPSSBulletedList, setEPSSBulletedList] = useState(null);
 
   const [epss_data, setEPSSData] = useState(null);
 
@@ -56,50 +56,50 @@ const App = () => {
       />
     ),
   ];
-  const [CVEBulletedList, setCVEBulletedList] = useState(null);
+  // const [CVEBulletedList, setCVEBulletedList] = useState(null);
 
-  const handleCVEDataLoaded = (data) => {
-    const parsedData = [];
+  // const handleCVEDataLoaded = (data) => {
+  //   const parsedData = [];
 
-    // Assuming the data is an array of objects, you can iterate over it
-    data.vulnerabilities.forEach((item, index) => {
-      // Extract the relevant properties from each item and push them to the parsedData array
-      const title = item.cve.id;
-      const description = item.cve.descriptions[0].value;
-      const baseSeverity = item.cve.metrics.cvssMetricV2
-        ? item.cve.metrics.cvssMetricV2[0]?.baseSeverity
-        : undefined;
-      const type = item.cve.metrics.cvssMetricV2
-        ? item.cve.metrics.cvssMetricV2[0]?.type
-        : undefined;
-      const impactScore = item.cve.metrics.cvssMetricV2
-        ? item.cve.metrics.cvssMetricV2[0]?.impactScore
-        : undefined;
-      parsedData.push({
-        title,
-        description,
-        baseSeverity,
-        type,
-        impactScore,
-        id: index,
-      });
-    });
+  //   // Assuming the data is an array of objects, you can iterate over it
+  //   data.vulnerabilities.forEach((item, index) => {
+  //     // Extract the relevant properties from each item and push them to the parsedData array
+  //     const title = item.cve.id;
+  //     const description = item.cve.descriptions[0].value;
+  //     const baseSeverity = item.cve.metrics.cvssMetricV2
+  //       ? item.cve.metrics.cvssMetricV2[0]?.baseSeverity
+  //       : undefined;
+  //     const type = item.cve.metrics.cvssMetricV2
+  //       ? item.cve.metrics.cvssMetricV2[0]?.type
+  //       : undefined;
+  //     const impactScore = item.cve.metrics.cvssMetricV2
+  //       ? item.cve.metrics.cvssMetricV2[0]?.impactScore
+  //       : undefined;
+  //     parsedData.push({
+  //       title,
+  //       description,
+  //       baseSeverity,
+  //       type,
+  //       impactScore,
+  //       id: index,
+  //     });
+  //   });
 
-    // Render the bulleted list
-    const listItems = parsedData.map((item, index) => (
-      <li key={item.title}>
-        <strong>{item.title}</strong>: {item.description}
-        <br />
-        <strong>Impact Score</strong>: {item.impactScore}
-        <br />
-        <strong>Base Severity</strong>: {item.baseSeverity}
-        <br />
-        <strong>Type</strong>: {item.type}
-      </li>
-    ));
+  //   // Render the bulleted list
+  //   const listItems = parsedData.map((item, index) => (
+  //     <li key={item.title}>
+  //       <strong>{item.title}</strong>: {item.description}
+  //       <br />
+  //       <strong>Impact Score</strong>: {item.impactScore}
+  //       <br />
+  //       <strong>Base Severity</strong>: {item.baseSeverity}
+  //       <br />
+  //       <strong>Type</strong>: {item.type}
+  //     </li>
+  //   ));
 
-    setCVEBulletedList(<ul key="cve-data">{listItems}</ul>);
-  };
+  //   setCVEBulletedList(<ul key="cve-data">{listItems}</ul>);
+  // };
 
   return (
     <div>
@@ -109,8 +109,8 @@ const App = () => {
         keywords="cve, epss, vulnerabilities"
       />
       <HomePage
-        title="Exploit Prediction Scoring System (EPSS)"
-        subtitle="https://www.first.org"
+        subtitle="Exploit Prediction Scoring System (EPSS)"
+        // subtitle="https://www.first.org"
         // buttonText="Contact Us"
         contentBlocks={contentBlocks}
       />

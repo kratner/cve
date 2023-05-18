@@ -10,12 +10,13 @@ import { scaleLinear } from "d3-scale";
 
 */
 
-const PointLabelRenderer = () => {
-  return (
-    <div>
-      <strong>CVE:</strong>
-    </div>
-  );
+const SpherePointRenderer = ({ lat, lng, color, radius }) => {
+  const sphereGeometry = new THREE.SphereGeometry(radius, 32, 32);
+  const sphereMaterial = new THREE.MeshLambertMaterial({ color });
+  const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
+  sphereMesh.position.set(lat, lng, radius); // Adjust the Z coordinate to lift the sphere above the globe
+
+  return <primitive object={sphereMesh} />;
 };
 
 const GlobeComponent = ({ data, globeImageUrl, width, height, position }) => {
@@ -28,7 +29,7 @@ const GlobeComponent = ({ data, globeImageUrl, width, height, position }) => {
   // Define the color scale for mapping percentile to color
   const colorScale = scaleLinear()
     .domain([0, 1]) // Assuming percentile ranges from 0 to 1
-    .range(["blue", "red"]);
+    .range(["orange", "red"]);
 
   return (
     <Globe
@@ -49,13 +50,21 @@ const GlobeComponent = ({ data, globeImageUrl, width, height, position }) => {
         d.percentile +
         "</div>"
       }
-      pointLat="lat"
-      pointLng="lng"
-      pointResolution={24} // Increase the point resolution for smoother spheres
+      // pointLat="lat"
+      // pointLng="lng"
+      // pointResolution={24} // Increase the point resolution for smoother spheres
       pointMaterial={({ percentile }) => {
         const color = new THREE.Color().setHSL(percentile, 1, 0.5);
         return new THREE.MeshLambertMaterial({ color });
       }}
+      pointRenderer={(props) => (
+        <SpherePointRenderer
+          lat={props.lat}
+          lng={props.lng}
+          color={props.color}
+          radius={props.radius}
+        />
+      )}
       width={width}
       height={height}
       position={position}
