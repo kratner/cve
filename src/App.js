@@ -6,6 +6,7 @@ import GlobeComponent from "./components/Globe";
 import HeadContent from "./components/HeadContent";
 import HomePage from "./components/HomePage";
 import { getRandomCoordinate } from "./utils/utils";
+import "./styles/index.scss";
 
 // const globeComponentData = [
 //   { lat: 40.7117244, lng: -74.0707383, label: "New York" },
@@ -51,8 +52,8 @@ const App = () => {
       <GlobeComponent
         data={epss_data}
         globeImageUrl={globeImageURLs[1]}
-        width="100vw"
-        height="100vh"
+        width={window.innerWidth}
+        height={window.innerHeight}
       />
     ),
   ];

@@ -42,7 +42,9 @@ const GlobeComponent = ({ data, globeImageUrl, width, height, position }) => {
       //   <PointLabelRenderer point={point} index={index} />
       // )}
       pointLabel={(d) =>
-        "<div><strong>CVE:</strong> " +
+        "<div style='border:" +
+        colorScale(d.percentile) +
+        " .1em solid;' class='data_points'><strong>CVE:</strong> " +
         d.cve +
         "<br /><strong>EPSS:</strong> " +
         d.epss +
