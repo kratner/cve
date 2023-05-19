@@ -20,6 +20,13 @@ const FixedHeader = styled.div`
   padding: 0em 1.5em;
 `;
 
+const FixedFooter = styled.div`
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+  padding: 1em;
+`
+
 const ContentUnderlay = styled.div`
   position: fixed;
   top: 0;
@@ -67,14 +74,16 @@ interface HomePageProps {
   title?: string;
   subtitle?: string;
   buttonText?: string;
-  contentBlocks: React.ReactNode[];
+  contentBlocks?: React.ReactNode[];
+  footerText?: string;
 }
 
 const HomePage: React.FC<HomePageProps> = ({
   title,
   subtitle,
   buttonText,
-  contentBlocks
+  contentBlocks,
+  footerText
 }) => {
   return (
     <Container>
@@ -84,10 +93,13 @@ const HomePage: React.FC<HomePageProps> = ({
         {buttonText && <Button>{buttonText}</Button>}
       </FixedHeader>
       <ContentUnderlay>
-        {contentBlocks.map((block, index) => (
+        {contentBlocks?.map((block, index) => (
           <ContentBlock key={index}>{block}</ContentBlock>
         ))}
       </ContentUnderlay>
+      <FixedFooter>
+        {footerText && <div>{footerText}</div>}
+      </FixedFooter>
     </Container>
   );
 };

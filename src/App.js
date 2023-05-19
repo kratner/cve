@@ -114,6 +114,7 @@ const App = () => {
         // subtitle="https://www.first.org"
         // buttonText="Contact Us"
         contentBlocks={contentBlocks}
+        footerText="5/15/2023"
       />
       {/* <Spheres data={epss_data} /> */}
 
