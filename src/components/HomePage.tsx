@@ -16,21 +16,22 @@ const Container = styled.div`
   color: #fff;
 `;
 
+const Header = styled.div`
+`;
+
 const FixedHeader = styled.div`
   padding: 0em 1.5em;
 `;
 
-const FixedFooter = styled.div`
-  position: fixed;
+const Footer = styled.div`
   bottom: 0;
   z-index: 5;
   padding: 1em;
 `
 
-const ContentUnderlay = styled.div`
-  position: fixed;
-  top: 0;
-  z-index: -2;
+
+const Content = styled.div`
+  // width: 100vh;
 `;
 
 const Title = styled.h1`
@@ -70,36 +71,42 @@ const ContentBlock: React.FC<BlockContainerProps> = ({ children}) => {
   return <BlockContainer>{children}</BlockContainer>;
 }
 
+
 interface HomePageProps {
+  fixedHeader?: React.ReactNode[];
   title?: string;
   subtitle?: string;
   buttonText?: string;
   contentBlocks?: React.ReactNode[];
   footerText?: string;
+  contentContainerClassName?: string;
 }
 
 const HomePage: React.FC<HomePageProps> = ({
+  fixedHeader,
   title,
   subtitle,
   buttonText,
   contentBlocks,
-  footerText
+  footerText,
+  contentContainerClassName
 }) => {
   return (
     <Container>
-      <FixedHeader>
+      {fixedHeader && <FixedHeader>
+      </FixedHeader>}
+      <Header>
         {title && <Title>{title}</Title>}
-        {subtitle && <Subtitle>{subtitle}</Subtitle>}
+        {subtitle && <Subtitle>{subtitle}</Subtitle>}</Header>
         {buttonText && <Button>{buttonText}</Button>}
-      </FixedHeader>
-      <ContentUnderlay>
+      <Content className={contentContainerClassName}>
         {contentBlocks?.map((block, index) => (
           <ContentBlock key={index}>{block}</ContentBlock>
         ))}
-      </ContentUnderlay>
-      <FixedFooter>
+      </Content>
+      <Footer>
         {footerText && <div>{footerText}</div>}
-      </FixedFooter>
+      </Footer>
     </Container>
   );
 };

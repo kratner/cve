@@ -31,3 +31,49 @@ https://services.nvd.nist.gov/rest/json/cves/2.0
       /> */}
       {/* {EPSSBulletedList} */}
 
+
+
+ // const [CVEBulletedList, setCVEBulletedList] = useState(null);
+
+  // const handleCVEDataLoaded = (data) => {
+  //   const parsedData = [];
+
+  //   // Assuming the data is an array of objects, you can iterate over it
+  //   data.vulnerabilities.forEach((item, index) => {
+  //     // Extract the relevant properties from each item and push them to the parsedData array
+  //     const title = item.cve.id;
+  //     const description = item.cve.descriptions[0].value;
+  //     const baseSeverity = item.cve.metrics.cvssMetricV2
+  //       ? item.cve.metrics.cvssMetricV2[0]?.baseSeverity
+  //       : undefined;
+  //     const type = item.cve.metrics.cvssMetricV2
+  //       ? item.cve.metrics.cvssMetricV2[0]?.type
+  //       : undefined;
+  //     const impactScore = item.cve.metrics.cvssMetricV2
+  //       ? item.cve.metrics.cvssMetricV2[0]?.impactScore
+  //       : undefined;
+  //     parsedData.push({
+  //       title,
+  //       description,
+  //       baseSeverity,
+  //       type,
+  //       impactScore,
+  //       id: index,
+  //     });
+  //   });
+
+  //   // Render the bulleted list
+  //   const listItems = parsedData.map((item, index) => (
+  //     <li key={item.title}>
+  //       <strong>{item.title}</strong>: {item.description}
+  //       <br />
+  //       <strong>Impact Score</strong>: {item.impactScore}
+  //       <br />
+  //       <strong>Base Severity</strong>: {item.baseSeverity}
+  //       <br />
+  //       <strong>Type</strong>: {item.type}
+  //     </li>
+  //   ));
+
+  //   setCVEBulletedList(<ul key="cve-data">{listItems}</ul>);
+  // };
